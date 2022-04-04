@@ -13,6 +13,6 @@ import (
 // Injectors from wire.go:
 
 func initializeApplication(name application.Name) (*application.Application, error) {
-	applicationApplication := application.NewApplication(name)
+	applicationApplication := application.New(name)
 	return applicationApplication, nil
 }

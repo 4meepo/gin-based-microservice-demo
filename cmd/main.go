@@ -18,5 +18,5 @@ func main() {
 }
 
 var wireSet = wire.NewSet(
-	application.NewApplication,
+	application.New,
 )

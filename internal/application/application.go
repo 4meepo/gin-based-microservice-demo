@@ -14,7 +14,7 @@ type Application struct {
 	// TODO: grpc server??
 }
 
-func NewApplication(name Name) *Application {
+func New(name Name) *Application {
 	return &Application{
 		Name:   name,
 		Engine: gin.Default(),
