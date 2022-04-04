@@ -36,3 +36,6 @@ In this demo, we will use Gin to build a simple cooking application.We will cove
 可以认为，我们的代码运行到Controller层之后，就没有任何与“协议”相关的代码了。在这里你找不到`http.Request`，也找不到`http.ResponseWriter`，也找不到任何与`thrift`或者`gRPC`相关的字眼。
 
 
+## DI 依赖注入
+
+
