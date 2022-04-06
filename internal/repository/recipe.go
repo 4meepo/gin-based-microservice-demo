@@ -9,12 +9,14 @@ type RecipeRepository interface {
 
 type RecipeRepositoryImpl struct{}
 
-func (RecipeRepositoryImpl) FindByID(id string) (*model.Recipe, error) {
-	// TODO implement me
-	panic("implement me")
+func NewRecipeRepositoryImpl() *RecipeRepositoryImpl{
+	return &RecipeRepositoryImpl{}
 }
 
-func (RecipeRepositoryImpl) Save(recipe *model.Recipe) error {
-	// TODO implement me
-	panic("implement me")
+func (r *RecipeRepositoryImpl) FindByID(id string) (*model.Recipe, error) {
+	panic("not implemented") // TODO: Implement
+}
+
+func (r *RecipeRepositoryImpl) Save(recipe *model.Recipe) error {
+	panic("not implemented") // TODO: Implement
 }

@@ -7,12 +7,32 @@
 package main
 
 import (
-	"gin-based-microservice-demo/internal/application"
+	"gin-based-microservice-demo/internal/controller"
+	"gin-based-microservice-demo/internal/logic"
+	"gin-based-microservice-demo/internal/repository"
+	"gin-based-microservice-demo/pkg/app"
+	"gin-based-microservice-demo/pkg/protocal/http"
+	"github.com/google/wire"
 )
 
 // Injectors from wire.go:
 
 func initializeApplication(name application.Name) (*application.Application, error) {
-	applicationApplication := application.New(name)
+	recipeRepositoryImpl := repository.NewRecipeRepositoryImpl()
+	recipeLogicImpl, err := logic.NewRecipeLogicImpl(recipeRepositoryImpl)
+	if err != nil {
+		return nil, err
+	}
+	recipeController, err := controller.NewRecipeController(recipeLogicImpl)
+	if err != nil {
+		return nil, err
+	}
+	registerController := controller.Register(recipeController)
+	server := http.NewServer(registerController)
+	applicationApplication := application.NewApplication(name, server)
 	return applicationApplication, nil
 }
+
+// wire.go:
+
+var wireSet = wire.NewSet(application.ProviderSet, http.ProviderSet, controller.ProviderSet, logic.ProviderSet, repository.ProviderSet)

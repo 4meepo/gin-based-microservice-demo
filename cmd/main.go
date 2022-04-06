@@ -1,10 +1,5 @@
 package main
 
-import (
-	"gin-based-microservice-demo/internal/application"
-	"github.com/google/wire"
-)
-
 func main() {
 	app, err := initializeApplication("gin-based-microservice-demo")
 
@@ -16,7 +11,3 @@ func main() {
 		panic(err)
 	}
 }
-
-var wireSet = wire.NewSet(
-	application.New,
-)
